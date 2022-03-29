@@ -6,8 +6,19 @@ import {Dish} from "../shared/dish"
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
+
+
+
 export class MenuComponent implements OnInit {
-  dishes: Dish[] = [
+  dishes =DISHES
+  selectedDish = DISHES[0]
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}
+const DISHES : Dish[] = [
     {
       id: '0',
       name: 'Uthappizza',
@@ -50,10 +61,3 @@ export class MenuComponent implements OnInit {
       description: 'A delectable, semi-sweet New York Style Cheese Cake, with Graham cracker crust and spiced with Indian cardamoms'
     }
    ];
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
