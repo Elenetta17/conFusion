@@ -3,9 +3,8 @@ export class Leader {
     name: string;
     image: string;
     designation: string;
-    featured: boolean;
     abbr: string;
-    price: string;
+    featured: boolean;
     description: string;
 
 }
