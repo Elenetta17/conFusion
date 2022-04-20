@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import {Feedback, ContactType } from '../shared/feedback';
+
+import { NgForm } from '@angular/forms';
+
 
 @Component({
   selector: 'app-contact',
@@ -10,6 +13,8 @@ import {Feedback, ContactType } from '../shared/feedback';
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent implements OnInit {
+
+  @ViewChild('fform') feedbackFormDirective: NgForm;
 
   feedbackForm: FormGroup;
   feedback: Feedback; 
@@ -37,6 +42,15 @@ export class ContactComponent implements OnInit {
   onSubmit() {
     this.feedback = this.feedbackForm.value;
     console.log(this.feedback);
-    this.feedbackForm.reset();
+    this.feedbackForm.reset({
+      firstname: '',
+      lastname: '',
+      telnum: '',
+      email: '',
+      agree: false,
+      contacttype: 'None',
+      message: ''
+    });
+    this.feedbackFormDirective.resetForm();
   }
 }
