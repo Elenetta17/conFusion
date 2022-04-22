@@ -54,9 +54,14 @@
             </mat-card-content>
           </mat-card>
 
-
-
+    <form novalidate [formGroup]="commentForm" #contactform = "ngForm" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+          <input matInput formControlName="author" placeholder="author" type="text" required>
+          <mat-error *ngIf="feedbackForm.get('author')?.hasError('required') && feedbackForm.get('firstname')?.touched">First name is required</mat-error>
+        </mat-form-field>
+    </form>
     </div> 
+
 
   </div>
   <div [hidden] = "dish">
