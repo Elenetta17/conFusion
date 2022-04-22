@@ -50,10 +50,23 @@
                     <span> --{{comment.author}}  {{comment.date|date}}</span>
                   </p>
                 </mat-list-item>
+                
+                <mat-list-item *ngIf ="!commentForm.invalid">
+                  <p matLine>
+                    <span> {{commentForm.value.comment}} </span>
+                  </p>
+                   <p matLine>
+                    <span> {{commentForm.value.rating}} </span>
+                  </p>
+                  <p matLine>
+                    <span> --{{commentForm.value.author}} </span>
+                  </p>
+                </mat-list-item>
+
               </mat-list>
             </mat-card-content>
           </mat-card>
-          <!-- <p>Value: {{ name.value }}  [disabled]="!profileForm.valid">Submit</button></p> -->
+          <!-- <p>Value: {{ name.value }}  [disabled]="!profileForm.valid">Submit</button></p>  <mat-list-item [hidden] ="commentForm.invalid">Ciao</mat-list-item>-->
 
 
     <form novalidate [formGroup]="commentForm" #contactform = "ngForm" (ngSubmit)="onSubmit()">

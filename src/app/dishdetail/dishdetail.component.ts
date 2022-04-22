@@ -34,17 +34,18 @@ export class DishdetailComponent implements OnInit {
   commentForm: FormGroup;
   commentInput: Comment;
 
-  formErrors : any ={
+  formErrors: any ={
     'author': '',
     'comment': ''
   }
   validationMessages: any = {
     'author': {
         'required': 'Name is required',
-        'minLength': 'Name must be at least 2 characters long'
+        'minlength': 'Name must be at least 2 characters long'
     },
+
     'comment':  {
-        'required': 'Comment is required',
+        'required': 'Comment is required'
     }
   }
 
@@ -61,7 +62,7 @@ createcommentForm() {
     this.commentForm = this.fc.group({
       rating: '5',
       comment: ['', Validators.required],
-      author: ['', Validators.required, Validators.minLength(2)],
+      author: ['', [Validators.required, Validators. minLength(2)]],
       date: Date.now(),
     });
 
@@ -94,14 +95,13 @@ createcommentForm() {
   onSubmit() {
     this.commentInput = this.commentForm.value;
     console.log(this.commentInput);
+    this.dish.comments.push(this.commentForm.value);
+    console.log(this.dish.comments,this.commentForm.value )
     this.commentForm.reset({
-    firstname: '',
-    lastname: '',
-    telnum: '',
-    email: '',
-    agree: false,
-    ontacttype: 'None',
-    message: ''
+    rating: '',
+    comment: '',
+    author: '',
+    date: '',
     });
     this.commentFormDirective.resetForm();
   }
