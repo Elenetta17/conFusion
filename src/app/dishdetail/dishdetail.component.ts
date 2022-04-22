@@ -98,10 +98,10 @@ createcommentForm() {
     this.dish.comments.push(this.commentForm.value);
     console.log(this.dish.comments,this.commentForm.value )
     this.commentForm.reset({
-    rating: '',
+    rating: '5',
     comment: '',
     author: '',
-    date: '',
+    date: Date.now(),
     });
     this.commentFormDirective.resetForm();
   }
