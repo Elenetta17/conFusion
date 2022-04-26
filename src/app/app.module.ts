@@ -43,6 +43,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { DishService } from './services/dish.service';
 import { PromotionService } from './services/promotion.service';
+import { ProcessHTTPMsgService } from './services/process-httpmsg.service';
+
 import { LeaderService } from './services/leader.service';
 import { LoginComponent } from './login/login.component';
 import { HighlightDirective } from './directives/highlight.directive';
@@ -89,7 +91,7 @@ import { HighlightDirective } from './directives/highlight.directive';
   entryComponents : [
     LoginComponent
   ],
-  providers: [DishService, PromotionService, LeaderService,  {provide: 'BaseURL', useValue: baseURL}],
+  providers: [DishService, PromotionService, LeaderService,  {provide: 'BaseURL', useValue: baseURL}, ProcessHTTPMsgService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
