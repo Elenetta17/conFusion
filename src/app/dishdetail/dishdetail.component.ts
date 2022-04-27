@@ -112,8 +112,12 @@ createcommentForm() {
 
   onSubmit() {
     this.commentInput = this.commentForm.value;
-    console.log(this.commentInput);
-    this.dish.comments.push(this.commentForm.value);
+    //this.dish.comments.push(this.commentForm.value);
+    this.dishcopy.comments.push(this.commentInput); 
+    this.dishservice.putDish(this.dishcopy).subscribe(dish => {
+        this.dish = dish; this.dishcopy = dish;
+      },
+      errmess => { this.dish = null as any; this.dishcopy = null as any; this.errMess = <any>errmess; });
     console.log(this.dish.comments,this.commentForm.value )
     this.commentForm.reset({
     rating: '5',
@@ -122,6 +126,7 @@ createcommentForm() {
     date: Date.now(),
     });
     this.commentFormDirective.resetForm();
+    
   }
 
 
