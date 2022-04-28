@@ -13,7 +13,7 @@ import { DatePipe } from '@angular/common';
 
 //import { trigger, state, style, animate, transition } from '@angular/animations';
 import { visibility } from '../animations/app.animations';
-import { flyInOut } from '../animations/app.animations';
+import { flyInOut, expand } from '../animations/app.animations';
 
 
 @Component({
@@ -25,7 +25,8 @@ import { flyInOut } from '../animations/app.animations';
   },
   animations: [
     flyInOut(), 
-    visibility()
+    visibility(),
+    expand()
   ]
 
 })
