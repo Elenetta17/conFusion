@@ -38,9 +38,11 @@
 
   <div fxFlex fxFlexOffset="20px" class="form-size">
     <h3>Send us your Feedback</h3>
-      <p>{{ feedbackForm.value | json }} {{ feedbackForm.status | json }}</p>
 
-    <form novalidate [formGroup]="feedbackForm" #fform = "ngForm" (ngSubmit)="onSubmit()">
+
+      <p [@visibility]= "formvisibility" [@expand] >{{ feedbackForm.value | json }} {{ feedbackForm.status | json }}</p>
+
+    <form novalidate [formGroup]="feedbackForm" #fform = "ngForm" (ngSubmit)="onSubmit()" [@visibility]= "formvisibility" [@expand]>
       <p>
        <mat-form-field class="half-width">
           <input matInput formControlName="firstname" placeholder="First Name" type="text" required>
@@ -81,5 +83,34 @@
       <button type="submit" mat-button class="background-primary text-floral-white">Submit</button>
     </form>
   </div>
+  <div [@visibility]= "submissionvisibility" [@expand]>
+      <h3>Your Submission</h3>
+      <p>
+        First Name: {{ feedbackForm.value.firstname}}
+      </p>
+      <p>
+        Last Name: {{ feedbackForm.value.lastname}}
+      </p>
+      <p>
+        Tel. Number: {{ feedbackForm.value.telnum}}
+      </p>
+      <p>
+        Email: {{ feedbackForm.value.email}}
+      </p>
+      <p>
+        Contact You?: {{ feedbackForm.value.agree}}
+      </p>
+      <p>
+        How?: {{ feedbackForm.value.contacttype}}
+      </p>
+      <p>
+       Feedback: {{ feedbackForm.value.message}}
+      </p>
+    </div>
+
+   <div [@visibility]= "spinnervisibility">
+    <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>   
+  </div>
+
 
 </div>
