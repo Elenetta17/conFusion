@@ -11,25 +11,23 @@ import { switchMap } from 'rxjs/operators';
 import {Comment} from '../shared/comment';
 import { DatePipe } from '@angular/common';
 
-import { trigger, state, style, animate, transition } from '@angular/animations';
+//import { trigger, state, style, animate, transition } from '@angular/animations';
+import { visibility } from '../animations/app.animations';
+import { flyInOut } from '../animations/app.animations';
+
 
 @Component({
   selector: 'app-dishdetail',
   templateUrl: './dishdetail.component.html',
-  styleUrls: ['./dishdetail.component.css'],
+  styleUrls: ['./dishdetail.component.css'],host: {
+  '[@flyInOut]': 'true',
+  'style': 'display: block;'
+  },
   animations: [
-    trigger('visibility', [
-        state('shown', style({
-            transform: 'scale(1.0)',
-            opacity: 1
-        })),
-        state('hidden', style({
-            transform: 'scale(0.5)',
-            opacity: 0
-        })),
-        transition('* => *', animate('0.5s ease-in-out'))
-    ])
+    flyInOut(), 
+    visibility()
   ]
+
 })
 export class DishdetailComponent implements OnInit {
 
